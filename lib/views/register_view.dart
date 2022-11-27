@@ -50,7 +50,7 @@ class _RegisterViewState extends State<RegisterView> {
                     enableSuggestions: false,
                     autocorrect: false,
                     decoration: const InputDecoration(
-                      hintText: "Email  ",
+                      hintText: "Email Address ",
                     ),
                   ),
                   TextField(
