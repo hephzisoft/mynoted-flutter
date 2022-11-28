@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mynotes/views/login_view.dart';
 
 import 'firebase_options.dart';
 
@@ -32,10 +33,12 @@ class HomePage extends StatelessWidget {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
+              print(user);
               if (user?.emailVerified ?? false) {
                 print("You are a verified user");
               } else {
                 print("You need to verify your email first");
+                return const VerifyEmailView();
               }
               return const Text("Done");
             default:
