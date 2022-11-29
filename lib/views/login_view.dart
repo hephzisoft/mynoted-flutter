@@ -64,9 +64,12 @@ class _LoginViewState extends State<LoginView> {
                 print("Wrong password ");
               }
             }
-          },
+          }, 
           child: const Text("Login"),
         ),
+        TextButton(
+            onPressed: () {},
+            child: const Text("Not registered yet? Register here")),
       ],
     );
   }
