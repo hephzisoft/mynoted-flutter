@@ -20,7 +20,7 @@ class _LoginViewState extends State<LoginView> {
     super.initState();
   }
 
-  @override 
+  @override
   void dispose() {
     _email.dispose();
     _password.dispose();
@@ -30,7 +30,9 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login"),),
+      appBar: AppBar(
+        title: const Text("Login"),
+      ),
       body: Column(
         children: [
           TextField(
@@ -55,18 +57,20 @@ class _LoginViewState extends State<LoginView> {
             onPressed: () async {
               final email = _email.text;
               final password = _password.text;
-    
+
               try {
-                final userCrediential = await FirebaseAuth.instance
-                    .signInWithEmailAndPassword(email: email, password: password);
-                devtools.log(userCrediential.toString());
+                await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: email, password: password);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/notes/',
+                  (route) => false,
+                );
               } on FirebaseAuthException catch (e) {
                 if (e.code == "user-not-found") {
                   devtools.log("User not found");
                 } else if (e.code == "wrong-password") {
                   devtools.log("Wrong password ");
                 }
-                 
               }
             },
             child: const Text("Login"),
