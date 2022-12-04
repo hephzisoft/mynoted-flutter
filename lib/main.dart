@@ -18,9 +18,9 @@ void main() {
     ),
     home: const HomePage(),
     routes: {
-     loginRoute: (context) => const LoginView(),
-     registerRoute: (context) => const RegisterView(),
-      noteRoutes:(context) => const NotesView(),
+      loginRoute: (context) => const LoginView(),
+      registerRoute: (context) => const RegisterView(),
+      noteRoutes: (context) => const NotesView(),
     },
   ));
 }
