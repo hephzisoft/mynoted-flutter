@@ -1,7 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.hephzisoft.mynotes">
    <application
         android:label="mynotes"
-        android:name="${applicationName}"
+       
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -31,3 +31,4 @@
             android:value="2" />
     </application>
 </manifest>
+
