@@ -13,7 +13,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     title: 'My notes',
-    theme: ThemeData(
+    theme: ThemeData( 
       primarySwatch: Colors.blueGrey,
     ),
     home: const HomePage(),
