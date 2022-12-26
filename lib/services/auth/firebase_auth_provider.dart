@@ -9,7 +9,7 @@ import '../../firebase_options.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
   @override
-  Future<AuthUser> Login(
+  Future<AuthUser> login(
       {required String email, required String password}) async {
     try {
       FirebaseAuth.instance

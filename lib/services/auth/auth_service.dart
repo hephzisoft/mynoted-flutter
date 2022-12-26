@@ -14,11 +14,11 @@ class AuthService implements AuthProvider {
         FirebaseAuthProvider(),
       );
   @override
-  Future<AuthUser> Login({
+  Future<AuthUser> login({
     required String email,
     required String password,
   }) =>
-      provider.Login(
+      provider.login(
         email: email,
         password: password,
       );

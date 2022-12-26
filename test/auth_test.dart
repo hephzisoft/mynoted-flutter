@@ -58,7 +58,7 @@ void main() {
     });
     test("Should be able to logout and login again", () async {
       await provider.logOut();
-      await provider.Login(
+      await provider.login(
         email: "email",
         password: "password",
       );
@@ -76,7 +76,7 @@ class MockAuthProvider implements AuthProvider {
 
   bool get isInitialized => _isInitialized;
   @override
-  Future<AuthUser> Login({
+  Future<AuthUser> login({
     required String email,
     required String password,
   }) {
@@ -95,7 +95,7 @@ class MockAuthProvider implements AuthProvider {
   }) async {
     if (!isInitialized) throw NotInitializedException();
     await Future.delayed(const Duration(seconds: 1));
-    return Login(email: email, password: password);
+    return login(email: email, password: password);
   }
 
   @override
