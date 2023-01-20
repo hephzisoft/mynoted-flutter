@@ -29,6 +29,13 @@
             {
               "client_id": "102444130146-1g06skv6tfb6i56o1ekfaeap5els0u4h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "102444130146-4tionf9i9mooaq7dfpjl7fibj3kj166u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hephzisoft.mynotes"
+              }
             }
           ]
         }
