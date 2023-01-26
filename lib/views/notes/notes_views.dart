@@ -15,10 +15,10 @@ class NotesView extends StatefulWidget {
 class _NotesViewState extends State<NotesView> {
   late final NotesService _notesService;
   String get userEmail => AuthService.firebase().currentUser!.email!;
+
   @override
   void initState() {
     _notesService = NotesService();
-    _notesService.open();
     super.initState();
   }
 
@@ -32,7 +32,7 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Notes"),
+        title: const Text('Your Notes'),
         actions: [
           IconButton(
             onPressed: () {
@@ -45,7 +45,6 @@ class _NotesViewState extends State<NotesView> {
               switch (value) {
                 case MenuAction.logout:
                   final shouldLogout = await showLogOutDialog(context);
-
                   if (shouldLogout) {
                     await AuthService.firebase().logOut();
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -57,13 +56,13 @@ class _NotesViewState extends State<NotesView> {
             },
             itemBuilder: (context) {
               return const [
-                PopupMenuItem(
+                PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
-                  child: Text("Sign out"),
+                  child: Text('Log out'),
                 ),
               ];
             },
-          ),
+          )
         ],
       ),
       body: FutureBuilder(
@@ -77,7 +76,7 @@ class _NotesViewState extends State<NotesView> {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                     case ConnectionState.active:
-                      return const Text("Waiting for all notes");
+                      return const Text('Waiting for all notes...');
                     default:
                       return const CircularProgressIndicator();
                   }
@@ -94,25 +93,26 @@ class _NotesViewState extends State<NotesView> {
 
 Future<bool> showLogOutDialog(BuildContext context) {
   return showDialog<bool>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Sign Out"),
-          content: const Text("Are you sure you want to sign out"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-              child: const Text("Cancel"),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-              child: const Text("Sign out"),
-            ),
-          ],
-        );
-      }).then((value) => value ?? false);
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Sign out'),
+        content: const Text('Are you sure you want to sign out?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            child: const Text('Log out'),
+          ),
+        ],
+      );
+    },
+  ).then((value) => value ?? false);
 }
